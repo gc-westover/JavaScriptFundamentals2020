@@ -13,9 +13,7 @@ function setTeachersNames(teachersName) {
 
 /*** return the sum of both arguments  ***/
 function add(a, b) {
-  let sum = a + b;
-
-  return sum;
+  return a+b;
 }
 
 /*** Using the increment operator, add a year to the argument and make me older */

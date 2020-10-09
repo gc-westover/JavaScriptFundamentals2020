@@ -11,7 +11,7 @@
  * console.log(array[2]) // [1, 2, 3, 4]
  */
 
-const createAnArray = () => {};
+const createAnArray = () => ['', Function, []];
 
 /**
  * Using "split", uppercase the target word in the string.
@@ -28,7 +28,14 @@ const createAnArray = () => {};
  * uppercaseTargetWord("Javascript is not cool", 5) // undefined
  */
 
-const uppercaseTargetWord = (str, target) => {};
+const uppercaseTargetWord = (str, target) => {
+  let words = str.split(' ')
+  if (target >= words.length) {
+    return undefined
+  }
+  words[target] = words[target].toUpperCase()
+  return words.join(' ')
+};
 
 /**
  *  CreateGraduateObject function takes in several arguments and combines them together in one object.
@@ -63,7 +70,15 @@ const createGraduateObject = (
   skills,
   githubLink,
   linkedInLink
-) => {};
+) => ({
+  name: name,
+  graduationYear: graduationYear,
+  skills: skills,
+  links: {
+    github: githubLink,
+    linkedIn: linkedInLink
+  }
+});
 
 /**
  * Ignore me.

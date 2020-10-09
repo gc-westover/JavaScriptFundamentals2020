@@ -14,7 +14,18 @@
  *
  * (This is technically not a closure. It is here to prepare you for the next problems.)
  */
-const greeter = () => {};
+// const greeter = () => { 
+//   return {hello: (name) => `Hello ${name}!`} 
+// };
+
+function greeter() {
+
+  function greet(name) {
+    return `Hello ${name}!`
+  }
+
+  return { hello: greet }
+}
 
 /**
  * As a programmer, I would like to be able to call on a function that returns an object that will allow me to
@@ -47,9 +58,12 @@ const greeter = () => {};
  * IMPORTANT! name the methods add,remove, and getList otherwise the tests will not work properly.
  */
 
-const groceryList = () => {
-  let groceryItems = [];
-};
+const groceryList = () => ({
+  groceryItems: [],
+  add: function (item) { this.groceryItems.push(item) },
+  remove: function (index) { this.groceryItems.pop(index - 1) },
+  getList: function () { return this.groceryItems }
+})
 
 /**
  * Use closures to complete this exercise.
@@ -72,6 +86,11 @@ const calculator = () => {
    * that should return the value of "sum" above.
    * @returns {number} the value of sum
    */
+  let sum = 0;
+  return {
+    setter: (num) => { sum += num },
+    getter: () => sum
+  }
 };
 
 /**
@@ -100,7 +119,25 @@ const calculator = () => {
  * guessRound2(1); // "No more guesses. The answer was 0"
  */
 
-const guessingGame = (numberOfRounds) => {};
+const guessingGame = (numberOfRounds) => {
+  let guesses = 0;
+  const answer = Math.floor(Math.random() * 11)
+
+  return function check(guess) {
+    guesses += 1
+    if (guesses > numberOfRounds) {
+      return `No more guesses. The answer was ${answer}`
+    }
+
+    if (guess < answer) {
+      return "You're too low!"
+    } else if (guess > answer) {
+      return "You're too high!"
+    } else {
+      return 'You got it!'
+    }
+  }
+};
 
 module.exports = {
   greeter,

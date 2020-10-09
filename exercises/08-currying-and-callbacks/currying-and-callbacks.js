@@ -13,7 +13,14 @@
  * @param {number} a
  * @param {number} b
  */
-const multiplier = (a, b) => {};
+function multiplier(a, b) {
+  if (arguments.length === 2) {
+    return a * b
+  } else {
+    const delayMultiply = (c) => a * c
+    return delayMultiply
+  }
+};
 
 /**
  * Create a function called "printer".
@@ -25,6 +32,8 @@ const multiplier = (a, b) => {};
  *  - Matina
  * @param {string} name instructor name
  */
+
+const printer = (name) => console.log(`- ${name}`)
 
 /**
  * NOTE that the test will use the "printer" function that you completed in the problem above.
@@ -38,7 +47,11 @@ const multiplier = (a, b) => {};
  * // - Jamal
  * // - Matina
  */
-const printNames = (array, callback) => {};
+const printNames = (array, callback) => {
+  for (let name of array) {
+    callback(name);
+  }
+};
 
 /**
  * Ignore everything below this line. It is for the tests.
@@ -52,6 +65,6 @@ try {
   //eslint-disable-next-line no-undef
   if (printer) myExports.printer = printer;
   // eslint-disable-next-line no-undef
-} catch (e) {}
+} catch (e) { }
 
 module.exports = myExports;

@@ -19,7 +19,11 @@ const forEach = (arr, callback) => {
  *   showFirstAndLast(['hi', 'goodbye', 'smile']) // ['hi', 'ge', 'se']
  */
 const showFirstAndLast = (arr) => {
-  let newArr = arr.map((word) => word[0] + word[word.length - 1])
+  // Using .forEach()
+  let newArr = [];
+  arr.forEach((word) => newArr.push(word[0] + word[word.length - 1]))
+  // Using .map()
+  // let newArr = arr.map((word) => word[0] + word[word.length - 1])
   return newArr
 };
 

@@ -119,24 +119,44 @@ const calculator = () => {
  * guessRound2(1); // "No more guesses. The answer was 0"
  */
 
+// const guessingGame = (numberOfRounds) => {
+//   let guesses = 0;
+//   const answer = Math.floor(Math.random() * 11)
+
+//   const check = (guess) => {
+//     guesses += 1
+//     if (guesses > numberOfRounds) {
+//       return `No more guesses. The answer was ${answer}`
+//     }
+
+//     if (guess < answer) {
+//       return "You're too low!"
+//     } else if (guess > answer) {
+//       return "You're too high!"
+//     } else {
+//       return 'You got it!'
+//     }
+//   }
+//   return check
+// };
+
 const guessingGame = (numberOfRounds) => {
   let guesses = 0;
-  const answer = Math.floor(Math.random() * 11)
-
-  return function check(guess) {
-    guesses += 1
+  const answer = Math.floor(Math.random() * 11);
+  let gameMechanics = (guess) => {
+    guesses += 1;
     if (guesses > numberOfRounds) {
-      return `No more guesses. The answer was ${answer}`
+      return `No more guesses. The answer was ${answer}`;
     }
-
     if (guess < answer) {
-      return "You're too low!"
+      return "You're too low!";
     } else if (guess > answer) {
-      return "You're too high!"
+      return "You're too high!";
     } else {
-      return 'You got it!'
+      return "You got it!";
     }
-  }
+  };
+  return gameMechanics;
 };
 
 module.exports = {

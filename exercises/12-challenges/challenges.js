@@ -7,7 +7,16 @@
  * @example findLongestWordLength("The quick brown fox jumped over the lazy dog") should return 6
  * @example findLongestWordLength("What is the average airspeed velocity of an unladen swallow") should return 8
  */
-function findLongestWordLength(str) {}
+function findLongestWordLength(str) {
+  let words = str.split(" ")
+  let longest = 0
+  for (let word of words) {
+    if (longest < word.length) {
+      longest = word.length
+    }
+  }
+  return longest
+}
 
 /**
  * Find the missing letter in the passed letter range and return it
@@ -22,7 +31,11 @@ function findLongestWordLength(str) {}
  *
  */
 function fearNotLetter(str) {
-  return str;
+  for (let i=0; i<str.length-1;i++) {
+    if (str.charCodeAt(i+1)-str.charCodeAt(i) !== 1) {
+      return String.fromCharCode(str.charCodeAt(i) + 1)
+    }
+  };
 }
 module.exports = {
   findLongestWordLength,

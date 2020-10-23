@@ -7,7 +7,7 @@
  */
 const find = (arr, callback) => {
   let result = []
-  for (let i=0;i<arr.length;i++) {
+  for (let i=0; i<arr.length; i++) {
     if (callback(arr[i],i,arr)) {
       return arr[i]
     }

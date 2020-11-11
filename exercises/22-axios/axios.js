@@ -15,3 +15,35 @@
  *
  * Use the AXIOS library to make AJAX requests.
  */
+const dropdown = document.querySelector("#dropdown")
+const charImage = document.querySelector('#get-schwifty')
+
+let characterData;
+axios.get('https://rickandmortyapi.com/api/character/')
+    .then((response) => {characterData = response.data.results; return response.data.results})
+    .then((data) => data.forEach(el => populateDropdown(el)))
+    .catch((error) => console.log(error))
+
+dropdown.addEventListener('change', (event) => {
+    console.log(event.target.value)
+    let charName = event.target.value
+    charImage.src = getCharImage(charName)
+})
+
+function populateDropdown(data) {
+    dropdown.appendChild(
+        document.createElement('option')
+    ).innerHTML = data.name
+}
+
+function getCharImage(name) {
+    try {
+        for (let char of characterData) {
+            if (char.name === name) {return char.image}
+        } 
+        return 'https://i.ytimg.com/vi/UFFi9PWKDjg/maxresdefault.jpg'
+    } catch (error) {
+        console.log(error)
+    }
+}
+
